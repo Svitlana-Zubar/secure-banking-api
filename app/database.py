@@ -6,9 +6,9 @@ DATABASE_URL = "postgresql+psycopg://svitlanazubar@localhost/secure_banking"
 engine = create_engine(DATABASE_URL)
 
 SessionLocal = sessionmaker(
-    blind=engine,
+    bind=engine,
     autoflush=False,
-    autocommint=False
+    autocommit=False
 )
 
 class Base(DeclarativeBase):
