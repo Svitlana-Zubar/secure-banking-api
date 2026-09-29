@@ -2,7 +2,7 @@ from pydantic import BaseModel, EmailStr, Field
 from datetime import datetime
 from decimal import Decimal
 from enum import Enum
-
+from typing import Literal
 
 class UserCreate(BaseModel):
     first_name: str
@@ -22,7 +22,7 @@ class UserLogin(BaseModel):
     password: str = Field(min_length=12, max_length=128)
 
 class AccountCreate(BaseModel):
-    pass
+    currency: Literal["GBP", "EUR", "USD"]
 
 class AccountResponse(BaseModel):
     id: int
