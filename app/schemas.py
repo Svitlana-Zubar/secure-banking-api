@@ -17,6 +17,10 @@ class UserResponse(BaseModel):
     email: EmailStr
     created_at: datetime
 
+class UserLogin(BaseModel):
+    email: EmailStr
+    password: str = Field(min_length=12, max_length=128)
+
 class AccountCreate(BaseModel):
     pass
 

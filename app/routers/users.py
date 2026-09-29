@@ -7,9 +7,9 @@ from app.database import get_db
 from app.security import hash_password, password_hash
 from app.models import User
 
-router = APIRouter(prefix="/users")
+users_router = APIRouter(prefix="/users")
 
-@router.post("/", response_model=UserResponse, status_code=201)
+@users_router.post("/", response_model=UserResponse, status_code=201)
 async def create_user(user: UserCreate, db: Session = Depends(get_db)):
     existing_user = db.scalar(select(User).where(User.email == user.email))
     if existing_user:
