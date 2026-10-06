@@ -33,15 +33,14 @@ class AccountResponse(BaseModel):
     currency: str
     created_at: datetime
 
-class TransactionType(Enum):
+class TransactionType(str, Enum):
     deposit = "deposit"
     withdrawal = "withdrawal"
 
 class TransactionCreate(BaseModel):
     type: TransactionType
-    amount: Decimal = Field(gt=0)
-    currency: str
-    description: str
+    amount: Decimal = Field(gt=0, max_digits=12, decimal_places=2)
+    description: str = Field(min_length=1, max_length=255)
 
 class TransactionResponse(BaseModel):
     id: int

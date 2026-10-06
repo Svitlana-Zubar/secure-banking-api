@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 
+from app.routers.transactions import transactions_router
 from app.routers.users import users_router
 from app.routers.auth import auth_router
 from app.routers.accounts import accounts_router
@@ -13,3 +14,4 @@ def root():
 app.include_router(users_router)
 app.include_router(auth_router)
 app.include_router(accounts_router)
+app.include_router(transactions_router)
